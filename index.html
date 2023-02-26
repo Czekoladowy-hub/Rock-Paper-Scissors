@@ -26,6 +26,52 @@
       let computerChoice = getComputerChoice(randomNumber); // Rock, Paper, Scissors
       console.log(randomNumber);
       console.log(computerChoice);
+
+      function playRound(playerSelection, computerSelection) {
+        if (playerSelection === "Rock" && computerSelection === "Rock") {
+          return "It`s a draw!";
+        } else if (
+          playerSelection === "Paper" &&
+          computerSelection === "Paper"
+        ) {
+          return "It`s a draw!";
+        } else if (
+          playerSelection === "Scissors" &&
+          computerSelection === "Scissors"
+        ) {
+          return "It`s a draw!";
+        } else if (
+          playerSelection === "Rock" &&
+          computerSelection === "Paper"
+        ) {
+          return "You lose!";
+        } else if (
+          playerSelection === "Rock" &&
+          computerSelection === "Scissors"
+        ) {
+          return "You win!";
+        } else if (
+          playerSelection === "Paper" &&
+          computerSelection === "Scissors"
+        ) {
+          return "You lose!";
+        } else if (
+          playerSelection === "Paper" &&
+          computerSelection === "Rock"
+        ) {
+          return "You win!";
+        } else if (
+          playerSelection === "Scissors" &&
+          computerSelection === "Rock"
+        ) {
+          return "You lose!";
+        } else if (
+          playerSelection === "Scissors" &&
+          computerSelection === "Paper"
+        ) {
+          return "You win!";
+        }
+      }
     </script>
   </body>
 </html>
