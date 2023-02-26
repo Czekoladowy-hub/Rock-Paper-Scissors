@@ -9,8 +9,8 @@
   </head>
   <body>
     <script>
-      function getComputerChoice(computerChoice) {
-        switch (computerChoice) {
+      function getComputerChoice(number) {
+        switch (number) {
           case 0:
             return "Rock";
             break;
@@ -22,7 +22,10 @@
             break;
         }
       }
-      let computerChoice = Math.floor(Math.random() * 3);
+      let randomNumber = Math.floor(Math.random() * 3); // 0, 1, 2
+      let computerChoice = getComputerChoice(randomNumber); // Rock, Paper, Scissors
+      console.log(randomNumber);
+      console.log(computerChoice);
     </script>
   </body>
 </html>
