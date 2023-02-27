@@ -23,11 +23,6 @@
         }
       }
 
-      let randomNumber = Math.floor(Math.random() * 3); // 0, 1, 2
-      let computerChoice = getComputerChoice(randomNumber); // Rock, Paper, Scissors
-      console.log(randomNumber);
-      console.log(computerChoice);
-
       function playRound(playerSelection, computerSelection) {
         if (playerSelection === "Rock" && computerSelection === "Rock") {
           return "It`s a draw!";
@@ -74,10 +69,26 @@
         }
       }
 
+      function capitalizeFirstLetter(playerChoice) {
+        return (
+          playerChoice.charAt(0).toUpperCase() +
+          playerChoice.slice(1).toLowerCase()
+        );
+      }
+
       function game() {
         for (i = 1; i <= 5; i++) {
           let playerChoice = prompt("Player choice:");
-          console.log(playRound(playerChoice, computerChoice));
+          capitalizeFirstLetter(playerChoice);
+          let randomNumber = Math.floor(Math.random() * 3);
+          let computerChoice = getComputerChoice(randomNumber);
+
+          console.log(
+            `${capitalizeFirstLetter(playerChoice)} vs ${computerChoice}`
+          );
+          console.log(
+            playRound(capitalizeFirstLetter(playerChoice), computerChoice)
+          );
         }
       }
       game();
