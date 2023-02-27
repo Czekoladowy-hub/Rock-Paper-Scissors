@@ -22,6 +22,7 @@
             break;
         }
       }
+
       let randomNumber = Math.floor(Math.random() * 3); // 0, 1, 2
       let computerChoice = getComputerChoice(randomNumber); // Rock, Paper, Scissors
       console.log(randomNumber);
@@ -72,7 +73,14 @@
           return "You win!";
         }
       }
-      let playerChoice = prompt("Player choice:");
+
+      function game() {
+        for (i = 1; i <= 5; i++) {
+          let playerChoice = prompt("Player choice:");
+          console.log(playRound(playerChoice, computerChoice));
+        }
+      }
+      game();
     </script>
   </body>
 </html>
