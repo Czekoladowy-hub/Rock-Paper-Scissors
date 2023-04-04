@@ -8,92 +8,88 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <button class="choiceButton" data-option="Rock">Rock</button>
+    <button class="choiceButton" data-option="Paper">Paper</button>
+    <button class="choiceButton" data-option="Scissors">Scissors</button>
+    <div class="playerPoints"></div>
+    <div class="compPoints"></div>
+    <div class="result"></div>
+    <div class="score"></div>
     <script>
-      function getComputerChoice(number) {
-        switch (number) {
-          case 0:
-            return "Rock";
-            break;
-          case 1:
-            return "Paper";
-            break;
-          case 2:
-            return "Scissors";
-            break;
+      const buttons = document.querySelectorAll("button");
+      const resultBox = document.querySelector(".result");
+      const scoreBox = document.querySelector(".score");
+      const compChoices = ["Rock", "Paper", "Scissors"];
+      const playerScoreBox = document.querySelector(".playerPoints");
+      const compScoreBox = document.querySelector(".compPoints");
+      let playerChoice = "";
+      let compChoice = "";
+      let playerScore = 0;
+      let compScore = 0;
+
+      //function setGame() {}
+
+      //window.onload = setGame();
+
+      buttons.forEach((button) => button.addEventListener("click", playRound));
+
+      function playRound() {
+        scoreBox.innerHTML = "";
+        playerSelect(event);
+        compSelect();
+        checkWinner(playerChoice, compChoice);
+        gameEnd();
+        resetGame();
+      }
+
+      function gameEnd() {
+        if (playerScore === 5) {
+          scoreBox.innerHTML = "Player won 5 rounds!";
+        } else if (compScore === 5) {
+          scoreBox.innerHTML = "Computer won 5 rounds!";
         }
       }
 
-      function playRound(playerSelection, computerSelection) {
-        if (playerSelection === "Rock" && computerSelection === "Rock") {
-          return "It`s a draw!";
-        } else if (
-          playerSelection === "Paper" &&
-          computerSelection === "Paper"
-        ) {
-          return "It`s a draw!";
-        } else if (
-          playerSelection === "Scissors" &&
-          computerSelection === "Scissors"
-        ) {
-          return "It`s a draw!";
-        } else if (
-          playerSelection === "Rock" &&
-          computerSelection === "Paper"
-        ) {
-          return "You lose!";
-        } else if (
-          playerSelection === "Rock" &&
-          computerSelection === "Scissors"
-        ) {
-          return "You win!";
-        } else if (
-          playerSelection === "Paper" &&
-          computerSelection === "Scissors"
-        ) {
-          return "You lose!";
-        } else if (
-          playerSelection === "Paper" &&
-          computerSelection === "Rock"
-        ) {
-          return "You win!";
-        } else if (
-          playerSelection === "Scissors" &&
-          computerSelection === "Rock"
-        ) {
-          return "You lose!";
-        } else if (
-          playerSelection === "Scissors" &&
-          computerSelection === "Paper"
-        ) {
-          return "You win!";
+      function resetGame() {
+        if (playerScore === 5 || compScore === 5) {
+          playerScore = 0;
+          compScore = 0;
+          playerScoreBox.innerHTML = "Player score: " + playerScore;
+          compScoreBox.innerHTML = "Computer score: " + compScore;
         }
       }
 
-      function capitalizeFirstLetter(playerChoice) {
-        return (
-          playerChoice.charAt(0).toUpperCase() +
-          playerChoice.slice(1).toLowerCase()
-        );
+      function playerSelect(event) {
+        playerChoice = event.target.dataset.option;
+        console.log("Player choice: " + playerChoice);
       }
 
-      function game() {
-        for (i = 1; i <= 5; i++) {
-          let playerChoice = prompt("Player choice:");
-          if (playerChoice === null) {
-            return;
-          }
-          capitalizeFirstLetter(playerChoice);
-          let randomNumber = Math.floor(Math.random() * 3);
-          let computerChoice = getComputerChoice(randomNumber);
-          console.log(
-            `${capitalizeFirstLetter(playerChoice)} vs ${computerChoice}`
-          );
-          console.log(
-            playRound(capitalizeFirstLetter(playerChoice), computerChoice)
-          );
+      function compSelect() {
+        compChoice =
+          compChoices[Math.floor(Math.random() * compChoices.length)];
+        console.log("Computer choice: " + compChoice);
+      }
+
+      function checkWinner(playerChoice, compChoice) {
+        // Script decide who wins round
+        if (
+          (playerChoice === "Scissors" && compChoice === "Paper") ||
+          (playerChoice === "Rock" && compChoice === "Scissors") ||
+          (playerChoice === "Paper" && compChoice === "Rock")
+        ) {
+          playerScore += 1;
+          playerScoreBox.innerHTML = "Player score: " + playerScore;
+          resultBox.innerHTML = "You won!";
+        } else if (playerChoice === compChoice) {
+          resultBox.innerHTML = "Draw!";
+        } else {
+          compScore += 1;
+          compScoreBox.innerHTML = "Computer score: " + compScore;
+          resultBox.innerHTML = "You lost!";
         }
       }
-      game();
+
+      //setGame();
     </script>
   </body>
 </html>
