@@ -14,27 +14,60 @@
       <div id="scoreContainer">
         <div class="score" class="playerScoreContainer">
           <div class="playerName">PLAYER</div>
-          <div class="playerScore"></div>
+          <div class="playerScore">0</div>
         </div>
         <div class="score" class="computerScoreContainer">
           <div class="playerName">COMPUTER</div>
-          <div class="computerScore"></div>
+          <div class="computerScore">0</div>
         </div>
       </div>
 
       <div id="buttonContainer">
-        <button class="buttonOption">Rock</button>
-        <button class="buttonOption">Paper</button>
-        <button class="buttonOption">Scissors</button>
+        <button class="buttonOption" data-option="Rock">Rock</button>
+        <button class="buttonOption" data-option="Paper">Paper</button>
+        <button class="buttonOption" data-option="Scissors">Scissors</button>
       </div>
       <div id="choiceContainer">
-        <div id="playerChoice"></div>
-        <div id="computerChoice"></div>
+        <div id="playerChoice">Player</div>
+        <div id="computerChoice">Computer</div>
       </div>
       <div id="winner"></div>
       <div id="resetContainer">
         <button id="reset">Reset game</button>
       </div>
     </div>
+    <script>
+      const buttons = document.querySelectorAll(".buttonOption");
+      const playerChoiceBox = document.querySelector("#playerChoice");
+      const computerChoiceBox = document.querySelector("#computerChoice");
+      const computerOptions = ["Rock", "Paper", "Scissors"];
+
+      playerChoice = "";
+      computerChoice = "";
+      let playerScore = 0;
+      let computerScore = 0;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", playRound);
+      });
+
+      function playRound(event) {
+        playerSelect(event);
+        computerSelect();
+      }
+
+      function playerSelect() {
+        playerChoice = event.target.dataset.option;
+        playerChoiceBox.innerHTML = playerChoice;
+        console.log("Player choice: " + playerChoice);
+      }
+
+      function computerSelect() {
+        computerChoice =
+          computerOptions[[Math.floor(Math.random() * computerOptions.length)]];
+        computerChoiceBox.innerHTML = computerChoice;
+        console.log("Computer choice: " + computerChoice);
+      }
+    </script>
   </body>
 </html>
