@@ -5,91 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <button class="choiceButton" data-option="Rock">Rock</button>
-    <button class="choiceButton" data-option="Paper">Paper</button>
-    <button class="choiceButton" data-option="Scissors">Scissors</button>
-    <div class="playerPoints"></div>
-    <div class="compPoints"></div>
-    <div class="result"></div>
-    <div class="score"></div>
-    <script>
-      const buttons = document.querySelectorAll("button");
-      const resultBox = document.querySelector(".result");
-      const scoreBox = document.querySelector(".score");
-      const compChoices = ["Rock", "Paper", "Scissors"];
-      const playerScoreBox = document.querySelector(".playerPoints");
-      const compScoreBox = document.querySelector(".compPoints");
-      let playerChoice = "";
-      let compChoice = "";
-      let playerScore = 0;
-      let compScore = 0;
+    <div id="mainContainer">
+      <div id="logo">Rock Paper Scissors</div>
+      <div id="scoreContainer">
+        <div class="score" class="playerScoreContainer">
+          <div class="playerName">PLAYER</div>
+          <div class="playerScore"></div>
+        </div>
+        <div class="score" class="computerScoreContainer">
+          <div class="playerName">COMPUTER</div>
+          <div class="computerScore"></div>
+        </div>
+      </div>
 
-      //function setGame() {}
-
-      //window.onload = setGame();
-
-      buttons.forEach((button) => button.addEventListener("click", playRound));
-
-      function playRound() {
-        scoreBox.innerHTML = "";
-        playerSelect(event);
-        compSelect();
-        checkWinner(playerChoice, compChoice);
-        gameEnd();
-        resetGame();
-      }
-
-      function gameEnd() {
-        if (playerScore === 5) {
-          scoreBox.innerHTML = "Player won 5 rounds!";
-        } else if (compScore === 5) {
-          scoreBox.innerHTML = "Computer won 5 rounds!";
-        }
-      }
-
-      function resetGame() {
-        if (playerScore === 5 || compScore === 5) {
-          playerScore = 0;
-          compScore = 0;
-          playerScoreBox.innerHTML = "Player score: " + playerScore;
-          compScoreBox.innerHTML = "Computer score: " + compScore;
-        }
-      }
-
-      function playerSelect(event) {
-        playerChoice = event.target.dataset.option;
-        console.log("Player choice: " + playerChoice);
-      }
-
-      function compSelect() {
-        compChoice =
-          compChoices[Math.floor(Math.random() * compChoices.length)];
-        console.log("Computer choice: " + compChoice);
-      }
-
-      function checkWinner(playerChoice, compChoice) {
-        // Script decide who wins round
-        if (
-          (playerChoice === "Scissors" && compChoice === "Paper") ||
-          (playerChoice === "Rock" && compChoice === "Scissors") ||
-          (playerChoice === "Paper" && compChoice === "Rock")
-        ) {
-          playerScore += 1;
-          playerScoreBox.innerHTML = "Player score: " + playerScore;
-          resultBox.innerHTML = "You won!";
-        } else if (playerChoice === compChoice) {
-          resultBox.innerHTML = "Draw!";
-        } else {
-          compScore += 1;
-          compScoreBox.innerHTML = "Computer score: " + compScore;
-          resultBox.innerHTML = "You lost!";
-        }
-      }
-
-      //setGame();
-    </script>
+      <div id="buttonContainer">
+        <button class="buttonOption">Rock</button>
+        <button class="buttonOption">Paper</button>
+        <button class="buttonOption">Scissors</button>
+      </div>
+      <div id="choiceContainer">
+        <div id="playerChoice"></div>
+        <div id="computerChoice"></div>
+      </div>
+      <div id="winner"></div>
+      <div id="resetContainer">
+        <button id="reset">Reset game</button>
+      </div>
+    </div>
   </body>
 </html>
