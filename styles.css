@@ -4,7 +4,8 @@ body {
 }
 
 #mainContainer {
-  margin: 20px;
+  margin: auto;
+  width: 1600px;
 }
 
 #logo {
