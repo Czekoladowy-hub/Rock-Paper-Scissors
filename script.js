@@ -21,6 +21,7 @@ function playRound() {
   computerSelect();
   roundWinner();
   checkGameEnd();
+  blockOptionButtons();
 }
 
 function playerSelect() {
@@ -60,6 +61,12 @@ function checkGameEnd() {
   }
 }
 
+function blockOptionButtons() {
+  if (playerScore === 5 || computerScore === 5) {
+    buttons.forEach((button) => (button.disabled = true));
+  }
+}
+
 resetBtn.addEventListener("click", setGame);
 
 function setGame() {
@@ -70,4 +77,5 @@ function setGame() {
   winnerBox.innerHTML = "";
   playerChoiceBox.innerHTML = "";
   computerChoiceBox.innerHTML = "";
+  buttons.forEach((button) => (button.disabled = false));
 }
