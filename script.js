@@ -2,8 +2,8 @@ const buttons = document.querySelectorAll(".buttonOption");
 const playerChoiceBox = document.querySelector("#playerChoice");
 const computerChoiceBox = document.querySelector("#computerChoice");
 const computerOptions = ["Rock", "Paper", "Scissors"];
-const playerScoreBox = document.querySelector(".playerScore");
-const computerScoreBox = document.querySelector(".computerScore");
+const playerScoreBox = document.querySelector("#score-left");
+const computerScoreBox = document.querySelector("#score-right");
 const winnerBox = document.querySelector("#winner");
 const resetBtn = document.querySelector("#reset");
 

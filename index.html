@@ -10,21 +10,32 @@
   <body>
     <div id="mainContainer">
       <div id="logo">Rock Paper Scissors</div>
-      <div id="scoreContainer">
-        <div class="score" class="playerScoreContainer">
+      <div id="middleContainer">
+        <div class="card" id="left">
           <div class="playerName">PLAYER</div>
-          <div class="playerScore">0</div>
+          <div id="buttonRock">
+            <button class="buttonOption" data-option="Rock">Rock</button>
+          </div>
         </div>
-        <div class="score" class="computerScoreContainer">
-          <div class="playerName">COMPUTER</div>
-          <div class="computerScore">0</div>
-        </div>
-      </div>
 
-      <div id="buttonContainer">
-        <button class="buttonOption" data-option="Rock">Rock</button>
-        <button class="buttonOption" data-option="Paper">Paper</button>
-        <button class="buttonOption" data-option="Scissors">Scissors</button>
+        <div class="card" id="middle">
+          <div id="scores">
+            <div id="score-left" class="score">0</div>
+            <div id="score-right" class="score">0</div>
+          </div>
+          <div id="buttonPaper">
+            <button class="buttonOption" data-option="Paper">Paper</button>
+          </div>
+        </div>
+
+        <div class="card" id="right">
+          <div class="playerName">COMPUTER</div>
+          <div id="buttonScissors">
+            <button class="buttonOption" data-option="Scissors">
+              Scissors
+            </button>
+          </div>
+        </div>
       </div>
       <div id="choiceContainer">
         <div id="playerChoice">Player</div>
